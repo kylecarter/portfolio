@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% load staticfiles %}{% block content %}
+{% if user.is_authenticated %}<h1>Welcome, {{ user.username }}</h1>
+<ul>
+    {% for todo in todos %}<li>{{ todo }}</li>{% endfor %}
+</ul>
+<a href="/accounts/logout/">Log Out</a>{% else %}<h1>Welcome to the Todo App</h1>
+{% lorem 3 p %}
+<a href="/accounts/login/?next={% url 'todos_list' %}">Log in to get Started</a>
+{% endif %}
+{% endblock content %}

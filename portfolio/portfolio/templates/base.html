@@ -1,0 +1,19 @@
+{% load staticfiles %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="main">
+        <nav id="nav" role="navigation"></nav>
+        <article id="article" role="main">
+            <header id="header" role="banner"></header>
+            <div id="content">
+                {% block content %}{% endblock content %}
+            </div>
+            <footer id="footer"></footer>
+        </article>
+    </div>
+</body>
+</html>
