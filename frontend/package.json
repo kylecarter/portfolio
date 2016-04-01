@@ -1,0 +1,32 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Frontend files for my personal portfolio site",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kylecarter/portfolio.git"
+  },
+  "keywords": [
+    "portfolio"
+  ],
+  "author": "Kyle A. Carter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kylecarter/portfolio/issues"
+  },
+  "homepage": "https://github.com/kylecarter/portfolio#readme",
+  "devDependencies": {
+    "babel": "6.5.2",
+    "backbone": "1.3.2",
+    "bourbon": "4.2.6",
+    "breakpoint-sass": "2.7.0",
+    "browserify": "13.0.0",
+    "jquery": "1.11.2",
+    "susy": "2.2.12",
+    "underscore": "1.8.3"
+  }
+}
