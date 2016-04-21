@@ -1,0 +1,160 @@
+@import '../node_modules/bourbon/app/assets/stylesheets/bourbon'
+@import '../node_modules/breakpoint-sass/stylesheets/breakpoint'
+@import '../node_modules/susy/sass/susy'
+@import './vendor/vendor'
+@import './quarks/quarks'
+
+html,body
+    margin: 0
+    padding: 0
+    @include size(100%)
+    color: $text-color
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    font: $font-weight-400 normal normal #{$font-size-base}/#{$line-height-base} $font-family-base
+
+p, label, address, abbr, button, label, li, input, span, td, a, strong, em, dd, dt, sup, sub, b, i
+    color: inherit
+    font-size: 1em
+
+p
+    margin: 0 0 em(10px)
+
+abbr, address
+    font:
+        weight: normal
+        style: normal
+
+abbr[title]
+    border: none
+
+button, label
+    display: inline
+    zoom: 1
+
+button, a, input[type="submit"], input[type="button"], input[type="reset"]
+    border: none
+    outline: none
+    text-decoration: none
+    background: transparent
+
+ul, ol, li
+    list-style: none
+    padding: 0
+    margin: 0
+
+sub, sup
+    font-size: 55%
+
+strong, b
+    font-weight: $font-weight-600
+
+em, i
+    font-style: italic
+
+fieldset
+    border: 0
+    outline: 0
+
+.org em
+    font:
+        style: normal
+        weight: $font-weight-300
+
+.text
+    &-left
+        text-align: left
+
+    &-right
+        text-align: right
+
+    &-center
+        text-align: center
+
+.pull
+    &-left
+      float: left !important
+
+    &-right
+      float: right !important
+
+.center-block
+    display: block
+    text-align: center
+    margin-right: auto
+    margin-left: auto
+
+.sr-only
+    position: absolute
+    @include size(1px)
+    padding: 0
+    margin: -1px
+    overflow: hidden
+    clip: rect(0,0,0,0)
+    border: 0
+
+.list-inline
+    padding: 0
+    margin: 0 0 0 -5px
+    list-style-type: none
+
+    > li
+        list-style-type: none
+        display: inline-block
+        margin-left: -4px
+        padding: 0 5px
+
+.list-unstyled
+    margin: 0
+    padding: 0
+    list-style-type: none
+
+    > li
+        list-style-type: none
+        padding: 0
+        margin: 0
+
+.list-table
+    margin: 0
+    padding: 0
+    display: table
+    list-style-type: none
+    border-collapse: collapse
+
+    > li
+        list-style-type: none
+        white-space: nowrap
+        display: table-cell
+        width: 1%
+        padding: 0
+        margin: 0
+
+.img
+    &-responsive
+        display: block
+        max-width: 100%
+        height: auto
+
+    &-circle
+        overflow: hidden
+        border-radius: 50%
+
+    &-rounded
+        overflow: hidden
+        border-radius: $border-radius-base
+
+    &-thumbnail
+        border-radius: $border-radius-base
+
+.underline
+    text-decoration: underline
+
+#main
+    padding: 0
+    margin: 0
+    @include size(100%)
+
+
+@import './atoms/atoms'
+@import './molecules/molecules'
+@import './compounds/compounds'

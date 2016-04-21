@@ -1,0 +1,66 @@
+.home
+
+	margin-top: $masthead-height
+
+	.masthead
+		@include size(100% $masthead-height)
+
+	.hero
+		background:
+			size: cover
+			position: center
+			attachment: fixed
+			repeat: no-repeat
+			color: $brand-primary
+			image: url('../images/home/home-hero.jpeg')
+		height: $hero-height
+		position: relative
+
+		[class*="col-"]
+			height: $hero-height
+
+		&-content
+			position: absolute
+			bottom: 30px
+			width: 100%
+
+		&-title
+			text-shadow: 0 1px 1px rgba(34, 30, 31, 0.55)
+			color: $white
+			margin: 0
+
+			small
+				font-size: 0.6em
+
+		&-subtitle
+			color: $white
+			font:
+				family: $font-family-base
+				weight: $font-weight-500
+			text-shadow: 0 1px 1px rgba(34, 30, 31, 0.55)
+
+			&:after
+				content: ''
+				margin: 0 auto
+				display: block
+				background: $white
+				@include size(50px 3px)
+
+
+		&-body
+			margin: 1em 0 0
+
+			.list-inline
+				margin: 0
+
+				> li
+					padding: 0 15px
+
+					&:first-child
+						padding-left: 0
+
+	.description
+		&-work
+		&-about
+		&-apps
+		&-map

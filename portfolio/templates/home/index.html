@@ -1,3 +1,40 @@
-{% extends "base.html" %}{% load staticfiles %}{% block content %}
-<h1>Welcome!</h1>
+{# TODO: Javascript to remove the .js-hero-pos #}
+{# TODO: Animate tag lines on page load with CSS3 #}
+{% extends "base.html" %}{% load staticfiles %}
+{% block mainClass %} class="home js-hero-pos"{% endblock mainClass %}
+
+{% block content %}
+
+<header class="hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 centered">
+
+				<section class="hero-content">
+					<div class="hero-heading"><h1 class="hero-title">Kyle A. Carter <small class="br">Web Developer</small></h1></div>
+					<div class="hero-body">
+						<ul class="list-inline">
+							<li class="animate-slogan">
+								<h3 class="hero-subtitle">Innovator</h3>
+							</li>
+							<li class="animate-slogan">
+								<h3 class="hero-subtitle">Creator</h3>
+							</li>
+							<li class="animate-slogan">
+								<h3 class="hero-subtitle">Builder</h3>
+							</li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+		</div>
+	</div>
+</header>
+
+<section class="description-work" role="section"></section>
+<section class="description-about" role="section"></section>
+<section class="description-apps" role="section"></section>
+<section class="description-map" role="section"></section>
+
 {% endblock content %}

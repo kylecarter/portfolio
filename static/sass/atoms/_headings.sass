@@ -1,0 +1,10 @@
+@each $heading, $map in $headings
+	#{$heading}
+		text-transform: map-get($map, transform)
+		color: map-get($map, color)
+		font:
+			size: map-get($map, size)
+			weight: map-get($map, weight)
+			style: map-get($map, style)
+			variant: map-get($map, variant)
+			family: map-get($map, family)

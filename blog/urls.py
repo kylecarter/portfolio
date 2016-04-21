@@ -1,7 +1,7 @@
 from django.conf.urls import include, url
-from . import views
+from .views import DocsList, DocsPost
 
 urlpatterns = [
-    url(r'^$', views.post_list, name='post_list'),
-    url(r'blog/(?P<slug>[a-zA-Z0-9\-_]+)/$'), views.post_detail, name='post_detail')
+    url(r'^$', DocsList),
+    url(r'docs/(?P<slug>[a-zA-Z0-9\-_]+)/$', DocsPost)
 ]

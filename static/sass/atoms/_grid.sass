@@ -1,0 +1,131 @@
+$susy-column-width: 120px
+$susy-gutter-width: 30px
+$susy-columns: 12
+$susy: (container: 1200, columns: $susy-columns, gutters: $susy-gutter-width/$susy-column-width, gutter-position: split, global-box-sizing: border-box, math: fluid, column-width: $susy-column-width)
+
+$xs: screen (max-width 767px)
+$sm-and-down: screen (max-width: 991px)
+$sm: screen (min-width 768px) (max-width 991px)
+$sm-and-up: screen (min-width 768px)
+$md-and-down: screen (max-width: 1199px)
+$md: screen (min-width 992px) (max-width 1199px)
+$md-and-up: screen (min-width 992px)
+$lg: screen (min-width 1200px)
+
+.container
+    padding:
+        left: gutters()
+        right: gutters()
+    margin:
+        left: auto
+        right: auto
+    @include susy-clearfix
+
+    @include breakpoint($sm)
+      width: 750px
+
+    @include breakpoint($md)
+      width: 970px
+
+    @include breakpoint($lg)
+        width: 1170px
+
+
+.container-fluid
+    padding-left: gutters()
+    padding-right: gutters()
+    margin-left: auto
+    margin-right: auto
+    @include susy-clearfix
+
+.row
+    margin:
+        left: -#{gutters()}
+        right: -#{gutters()}
+    @include susy-clearfix
+
+@for $i from 1 through 12
+    .col-xs-#{$i},
+    .col-sm-#{$i},
+    .col-md-#{$i},
+    .col-lg-#{$i}
+        position: relative
+
+        &.centered
+            $width: span($i) + (gutters() * 2)
+            float: none
+            width: $width
+            margin-left: auto
+            margin-right: auto
+
+    .col-xs-#{$i}
+        @include span($i)
+
+    .col-xs-push-#{$i}
+        left: span($i)
+
+    .col-xs-pull-#{$i}
+        right: span($i)
+
+    .col-xs-prefix-#{$i}
+        @include prefix($i of 12)
+
+    .col-xs-suffix-#{$i}
+        @include suffix($i of 12)
+
+    //This is to set up responsive if we ever get around to it
+    @include breakpoint($sm-and-up)
+        .col-sm-#{$i}
+            @include span($i)
+
+        .col-sm-push-#{$i}
+            left: span($i)
+
+        .col-sm-pull-#{$i}
+            right: span($i)
+
+        .col-sm-prefix-#{$i}
+            @include prefix($i of 12)
+
+        .col-sm-suffix-#{$i}
+            @include suffix($i of 12)
+
+    @include breakpoint($md-and-up)
+        .col-md-#{$i}
+            @include span($i)
+
+        .col-md-push-#{$i}
+            left: span($i)
+
+        .col-md-pull-#{$i}
+            right: span($i)
+
+        .col-md-prefix-#{$i}
+            @include prefix($i of 12)
+
+        .col-md-suffix-#{$i}
+            @include suffix($i of 12)
+
+    @include breakpoint($lg)
+        .col-lg-#{$i}
+            @include span($i)
+
+        .col-lg-push-#{$i}
+            left: span($i)
+
+        .col-lg-pull-#{$i}
+            right: span($i)
+
+        .col-lg-prefix-#{$i}
+            @include prefix($i of 12)
+
+        .col-lg-suffix-#{$i}
+            @include suffix($i of 12)
+
+.alpha
+    @include first
+    margin-left: 0
+
+.omega
+    @include last
+    margin-right: 0

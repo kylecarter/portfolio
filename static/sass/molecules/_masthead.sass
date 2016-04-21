@@ -1,0 +1,36 @@
+.masthead
+	background: $brand-primary
+	white-space: nowrap
+	overflow: hidden
+	position: fixed
+	z-index: 10
+	left: 0
+	top: 0
+
+	&-navigation
+		ul
+			display: table
+
+			> li
+				line-height: $masthead-height
+				display: table-cell
+				padding: 0 15px
+
+				a
+					color: $white
+
+	&-branding
+		a
+			display: block
+			line-height: $masthead-height
+			@include size($masthead-height)
+			background:
+				size: ($masthead-height - 10)
+				position: center
+				repeat: no-repeat
+				color: transparent
+				image: url('../images/logo.svg')
+
+	.js-hero-pos &
+		background: transparent
+		text-shadow: 0 1px 1px rgba(34, 30, 31, 0.55)
