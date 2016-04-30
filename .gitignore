@@ -1,5 +1,5 @@
 *.pyc
-/static/node_modules
+/node_modules
 /static/CACHE
 /bower_components
 .DS_Store
