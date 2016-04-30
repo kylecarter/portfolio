@@ -17,7 +17,7 @@ router.register(r'schools', EducationViewSet)
 router.register(r'links', ProjectURLViewSet)
 
 
-urlpatterns = patterns('',
+urlpatterns = [
   url(r'^', include(router.urls)),
   url(r'^employment/$', EmploymentView.as_view()),
-)
+]
