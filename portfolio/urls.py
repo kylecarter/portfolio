@@ -21,10 +21,12 @@ from .views import HomeView
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^djrichtextfield/', include('djrichtextfield.urls')),
+    url(r'^api/', include('api.urls')),
+    url(r'^docs/', include('blog.urls')),
     # url(r'^accounts/login/$', LoginView.as_view(), name='login_user'),
     # url(r'^accounts/logout/', views.logout_user, name='logout_user'),
     # url(r'^register/', views.register_user, name='register_user'),
-    url(r'^docs/', include('blog.urls')),
     # url(r'^todos/', include('todo.urls')),
 
     # Test URLs remove before sending to production

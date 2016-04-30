@@ -10,12 +10,16 @@ class Skill(models.Model):
 		return u'%s' % (self.label)
 
 
+	def __str__(self):
+		return self.label
+
+
 class Job(models.Model):
 	org = models.CharField(max_length=500)
 	city = models.CharField(max_length=500)
 	state = models.CharField(max_length=500)
 	title = models.CharField(max_length=500)
-	description = models.TextField(max_length=500)
+	description = models.TextField()
 	start_date = models.DateField(auto_now=False, auto_now_add=False)
 	end_date = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
 	skills = models.ManyToManyField(Skill)
@@ -23,6 +27,10 @@ class Job(models.Model):
 
 	def __unicode__(self):
 		return u'%s' % (self.org)
+
+
+	def __str__(self):
+		return self.org
 
 
 class Education(models.Model):
@@ -36,14 +44,21 @@ class Education(models.Model):
 		return u'%s' % (self.school)
 
 
+	def __str__(self):
+		return self.school
+
+
 class Degree(models.Model):
 	degree = models.CharField(max_length=500)
 	school = models.ForeignKey(Education)
 
 
 	def __unicode__(self):
-		return u'Degree in %s from %s' % (self.degree, self.school.school)
+		return u'%s' % (self.degree)
 
+
+	def __str__(self):
+		return self.degree
 
 
 class Contact(models.Model):
@@ -57,7 +72,11 @@ class Contact(models.Model):
 
 
 	def __unicode__(self):
-		return u'Street Address %s in %s' % (self.address, self.state)
+		return u'%s %s, %s %s' % (self.address, self.city, self.state, self.zipcode)
+
+
+	def __str__(self):
+		return self.address
 
 
 class Award(models.Model):
@@ -68,14 +87,22 @@ class Award(models.Model):
 		return u'%s' % (self.presented)
 
 
+	def __str__(self):
+		return self.presented
+
+
 class Project(models.Model):
 	name = models.CharField(max_length=500)
-	description = models.TextField(max_length=500)
+	description = models.TextField()
 	skills = models.ManyToManyField(Skill)
 
 
 	def __unicode__(self):
 		return u'%s' % (self.name)
+
+
+	def __str__(self):
+		return self.name
 
 
 class ProjectURL(models.Model):
@@ -85,3 +112,8 @@ class ProjectURL(models.Model):
 	
 	def __unicode__(self):
 		return u'%s' % (self.link)
+
+
+	def __str__(self):
+		return self.link
+

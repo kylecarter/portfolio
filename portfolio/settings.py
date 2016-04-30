@@ -20,13 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['ENV_DEBUG']
+DEBUG = eval(os.environ['DEBUG_MODE'])
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -36,6 +34,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'compressor',
     'rest_framework',
+    'djrichtextfield',
     'portfolio',
     'api',
     'todo',
@@ -77,6 +76,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'portfolio.wsgi.application'
 
+DJRICHTEXTFIELD_CONFIG = {
+    'js': ['node_modules/tinymce/tinymce.min.js'],
+    'init_template': 'djrichtextfield/init/tinymce.js',
+    'settings': {
+        'menubar': False,
+        'plugins': 'link code lists',
+        'toolbar': 'code | undo redo | cut copy paste | styleselect | link bullist numlist',
+        'width': '100%'
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -89,7 +98,7 @@ DATABASES = {
         'PASSWORD': os.environ['POSTGRES_PASSWORD'],
         'HOST': os.environ['DATABASE_HOST'],
         'PORT': os.environ['DATABASE_PORT'],
-    }
+    },
 }
 
 db_from_env = dj_database_url.config(conn_max_age=500)
