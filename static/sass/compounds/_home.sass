@@ -2,9 +2,6 @@
 
 	margin-top: $masthead-height
 
-	.masthead
-		@include size(100% $masthead-height)
-
 	.hero
 		background:
 			size: cover
@@ -61,6 +58,21 @@
 
 	.description
 		&-work
+
 		&-about
+			padding: 42px 0
+			background: $yellow
+			
+			&-heading
+				padding: 30px 0 21px
+
+			&-title
+				text-align: center
+			
+
 		&-apps
+
 		&-map
+		
+			#map
+				@include size(100% 600px)

@@ -1,5 +1,14 @@
-{% extends "base.html" %}{% load staticfiles %}{% block content %}
+{% extends "base.html" %}{% load staticfiles %}{% load compress %}{% block page_title %}{{post.title}}{% endblock page_title %}
+{% block mainClass %} class="post nav-fixed-left"{% endblock mainClass %}
 
-<header id="header" class="hero"></header>
+{% block content %}
+
+<div class="content-container">
+    <header class="post-heading">
+        <h1 class="post-title">{{post.title}}</h1>
+        <small>Published: {{post.created}}</small>
+    </header>
+    {{ post.text|safe }}
+</div>
 
 {% endblock content %}

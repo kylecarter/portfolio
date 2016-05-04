@@ -1,6 +1,9 @@
 *.pyc
 /node_modules
-/static/CACHE
+/static/staticfiles.json
+/static/admin
+/static/js
+static/rest_framework
 /bower_components
 .DS_Store
 db.sqlite3

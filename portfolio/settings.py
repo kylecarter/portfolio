@@ -12,6 +12,8 @@ import os
 import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SITE_ROOT = os.path.dirname(BASE_DIR)  
+SITE_NAME = os.path.basename(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -35,9 +37,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'compressor',
+    # 'pipeline',
     'rest_framework',
     'djrichtextfield',
+    'compressor',
+    'compressor_toolkit',
     'portfolio',
     'api',
     'todo',
@@ -55,9 +59,37 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
+# PIPELINE = {
+#     'PIPELINE_ENABLED': DEBUG,
+#     'SHOW_ERRORS_INLINE': DEBUG,
+#     'COMPILERS': (
+#         'pipeline_browserify.compiler.BrowserifyCompiler',
+#     ),
+#     'JS_COMPRESSOR': 'pipeline.compressors.uglifyjs.UglifyJSCompressor',
+#     'BROWSERIFY_ARGUMENTS': '-d -t [ babelify --presets [ es2015 react ] ]',
+#     'DISABLE_WRAPPER': False,
+#     'JAVASCRIPT': {
+#         'browserify': {
+#             'source_filenames': (
+#                 'static/babel/entry.browserify.js',
+#             ),
+#             'output_filename': 'js/application.js',
+#         }
+#     }
+# }
+
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
+    ('module', 'compressor_toolkit.precompilers.ES6Compiler'),
 )
+
+COMPRESS_NODE_MODULES = '/node_modules'
+COMPRESS_ES6_COMPILER_CMD = 'export NODE_PATH="{paths}" && browserify "{infile}" -o "{outfile}" --node -t [ babelify --presets [ es2015 react ] ]' 
+
+# if DEBUG:
+#     COMPRESS_ES6_COMPILER_CMD = 'export NODE_PATH="{paths}" && browserify "{infile}" -o "{outfile}" -d --node -t [ envify --NODE_ENV development, babelify --presets [ es2015 react ] ]' 
+# else:
+#     COMPRESS_ES6_COMPILER_CMD = 'export NODE_PATH="{paths}" && browserify "{infile}" -o "{outfile}" --node -t [ envify --NODE_ENV production, babelify --presets [ es2015 react ] ]' 
 
 ROOT_URLCONF = 'portfolio.urls'
 
@@ -80,7 +112,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 DJRICHTEXTFIELD_CONFIG = {
-    'js': ['node_modules/tinymce/tinymce.min.js'],
+    'js': ['tinymce/tinymce.min.js'],
     'init_template': 'djrichtextfield/init/tinymce.js',
     'settings': {
         'menubar': False,
@@ -130,9 +162,15 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
+    # 'pipeline.finders.PipelineFinder',
 )
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 
+# STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+API_KEYS = {
+    'GOOGLE': os.environ['GOOGLE_API_KEY'], 
+}

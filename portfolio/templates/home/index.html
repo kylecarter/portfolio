@@ -1,7 +1,8 @@
 {# TODO: Javascript to remove the .js-hero-pos #}
 {# TODO: Animate tag lines on page load with CSS3 #}
 {% extends "base.html" %}{% load staticfiles %}
-{% block mainClass %} class="home js-hero-pos"{% endblock mainClass %}
+{% block page_title %}Kyle A. Carter{% endblock page_title %}
+{% block mainClass %} class="home nav-fixed-top"{% endblock mainClass %}
 
 {% block content %}
 
@@ -32,9 +33,40 @@
 	</div>
 </header>
 
-<section class="description-work" role="section"></section>
-<section class="description-about" role="section"></section>
-<section class="description-apps" role="section"></section>
-<section class="description-map" role="section"></section>
+<section class="description-work" role="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="description-about" role="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4">
+				<figure class="description-about-viewport"><img src="{% static "images/home/devices.png" %}" alt="" class="img-background"></figure>
+			</div>
+			<div class="col-sm-8">
+				<header class="description-about-heading">
+					<h3 class="description-about-title">One Web &mdash; Lots of Browsers</h3>
+				</header>
+				<div class="description-about-body">
+					<p>Technology is on the go. And web content is driving a vast majority of the advancements. I am an experienced front end developer versed in UI and UX interactions driven by a desire to create scalable, innovative web applications that inspire and promote success.</p>
+					<p>I have a work history showing my ability to create web content to meet a variety needs. From ebooks to web pages and all the way to desktop tools, I have shaped modern web technogoly to meet the needs of my clients.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="description-map" role="section">
+	<script src="https://maps.googleapis.com/maps/api/js?key={{ keys.GOOGLE }}"></script>
+	<script type="text/template" class="template" id="map-info">
+		<h4 style="margin: 0;">Based in Austin, Texas</h4>
+	</script>
+	<div id="map"></div>
+</section>
 
 {% endblock content %}

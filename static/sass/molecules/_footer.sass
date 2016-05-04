@@ -1,7 +1,38 @@
 .footer
-	background: $footer-bg
-	color: $footer-color
-	padding: 12px 0
+	
+	.nav-fixed-top &
+		background: $footer-bg
+		color: $footer-color
+		padding: 12px 0
+
+		&-container
+			@extend .container;
+		
+		&-col
+			@extend .col-sm-6
+		
+		.social		
+			float: right
+			
+			a
+				color: $footer-color
+		
+	.nav-fixed-left &
+		border-left: thin solid rgba($black,.2)
+		background: $post-bg
+
+		&-container
+			border-top: 4px solid $masthead-left-bg
+			padding: 30px
+
+		&-col
+			@extend .col-sm-6
+			
+		.social
+			float: right
+		
+		.social a
+			color: $masthead-left-bg
 
 	.copyright
 		line-height: 1.6
@@ -11,11 +42,9 @@
 			margin: 0
 
 	.social
-		float: right
 		font-size: 1.875em
 
 		a
-			color: $footer-color
 			@include size(24px)
 			display: block
 

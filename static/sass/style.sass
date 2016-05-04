@@ -7,8 +7,9 @@
 html,body
     margin: 0
     padding: 0
-    @include size(100%)
     color: $text-color
+    @include size(100%)
+    background: $post-bg
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale
     font: $font-weight-400 normal normal #{$font-size-base}/#{$line-height-base} $font-family-base
@@ -56,6 +57,9 @@ fieldset
     border: 0
     outline: 0
 
+figure
+    margin: 0
+
 .org em
     font:
         style: normal
@@ -84,7 +88,10 @@ fieldset
     margin-right: auto
     margin-left: auto
 
-.sr-only
+.br
+    display: block
+
+.sr-only, .text-hide
     position: absolute
     @include size(1px)
     padding: 0
@@ -153,6 +160,7 @@ fieldset
     padding: 0
     margin: 0
     @include size(100%)
+    position: absolute;
 
 
 @import './atoms/atoms'

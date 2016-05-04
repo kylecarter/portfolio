@@ -1,6 +1,7 @@
 from django.http import *
 from django.shortcuts import render_to_response, redirect, render, get_object_or_404
 from django.views.generic import TemplateView
+from django.template import RequestContext
 
 from rest_framework import viewsets, mixins, generics
 from rest_framework.permissions import IsAdminUser
@@ -17,8 +18,9 @@ class DocsList(TemplateView):
 	template_name = 'blog/index.html'
 
 
-class DocsPost(TemplateView):
-    template_name = 'blog/blog.html'
+def view_doc(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    return render_to_response('blog/blog.html', { 'post': post }, context_instance=RequestContext(request))
 
 
 class ForbiddenAccess(APIException):
