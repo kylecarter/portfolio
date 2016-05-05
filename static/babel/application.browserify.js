@@ -24,5 +24,11 @@ class Portfolio {
     }
 }
 
+$.ajaxSetup({
+  data: {
+      format: 'json'
+  }
+});
+
 var p = new Portfolio();
 p.initalize();

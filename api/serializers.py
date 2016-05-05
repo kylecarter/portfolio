@@ -28,7 +28,7 @@ class AwardSerializer(serializers.HyperlinkedModelSerializer):
 class ProjectSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Project
-        fields = ('id', 'name', 'description', 'skills')
+        fields = ('id', 'name', 'description', 'skills', 'img')
 
 
 class SkillSerializer(serializers.HyperlinkedModelSerializer):

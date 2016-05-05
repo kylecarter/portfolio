@@ -88,6 +88,12 @@ figure
     margin-right: auto
     margin-left: auto
 
+.lnk
+    &-default
+        color: $link-color
+        &:hover,&:focus
+            color: $link-hover-color
+
 .br
     display: block
 
@@ -101,8 +107,6 @@ figure
     border: 0
 
 .list-inline
-    padding: 0
-    margin: 0 0 0 -5px
     list-style-type: none
 
     > li
@@ -112,18 +116,12 @@ figure
         padding: 0 5px
 
 .list-unstyled
-    margin: 0
-    padding: 0
     list-style-type: none
 
     > li
         list-style-type: none
-        padding: 0
-        margin: 0
 
 .list-table
-    margin: 0
-    padding: 0
     display: table
     list-style-type: none
     border-collapse: collapse
@@ -152,6 +150,13 @@ figure
 
     &-thumbnail
         border-radius: $border-radius-base
+    
+    &-background
+        @include transform(translate(-50%,-50%))
+        position: absolute
+        z-index: -1
+        left: 50%
+        top: 50%
 
 .underline
     text-decoration: underline

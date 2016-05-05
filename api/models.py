@@ -95,6 +95,7 @@ class Project(models.Model):
 	name = models.CharField(max_length=500)
 	description = models.TextField()
 	skills = models.ManyToManyField(Skill)
+	img = models.CharField(max_length=500, blank=True)
 
 
 	def __unicode__(self):
