@@ -3,7 +3,8 @@
 /static/staticfiles.json
 /static/admin
 /static/js
-static/rest_framework
+/static/rest_framework
+/static/CACHE
 /bower_components
 .DS_Store
 db.sqlite3
