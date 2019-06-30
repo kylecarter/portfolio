@@ -1,0 +1,40 @@
+FROM node:12.5.0-alpine
+
+# Define arguments
+ARG ALLOWED_HOSTS
+
+ARG DJANGO_HOST
+ARG DJANGO_PORT
+
+ARG PORT
+ARG PRODUCTION
+ARG NODE_ENV
+
+# Make the arguments environment variables
+ENV ALLOWED_HOSTS $ALLOWED_HOSTS
+
+ENV DJANGO_HOST $DJANGO_HOST
+ENV DJANGO_PORT $DJANGO_PORT
+
+ENV PORT $PORT
+ENV NODE_ENV $NODE_ENV
+ENV NPM_CONFIG_PRODUCTION $NPM_CONFIG_PRODUCTION
+
+# Create working directories
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+# Copy project
+COPY . /usr/src/app
+
+# Make sure yarn and pipenv are available
+RUN npm i -g yarn
+
+# Copy package and package lock files
+COPY package*.json yarn.lock /usr/src/app/
+
+# Now we install.
+RUN yarn install
+
+# Expose a port
+EXPOSE 3000

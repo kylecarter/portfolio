@@ -1,25 +1,63 @@
 version: "3.7"
 
 services:
+  db:
+    image: postgres:10.1-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
   web:
+    command: yarn start
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - PIPENV_VENV_IN_PROJECT=${PIPENV_VENV_IN_PROJECT}
+        - SECRET_KEY=${SECRET_KEY}
+        - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+        - DJANGO_HOST=${DJANGO_HOST}
+        - DJANGO_PORT=${DJANGO_PORT}
+        - DEBUG=${DEBUG}
+        - JS_DEBUG=${JS_DEBUG}
+        - LOCAL_DEV=${LOCAL_DEV}
+        - TEMPLATE_DEBUG=${TEMPLATE_DEBUG}
+        - PRODUCTION=${PRODUCTION}
+        - PORT=${PORT}
+        - NODE_ENV=${NODE_ENV}
+        - DB_NAME=${DB_NAME}
+        - DB_USER=${DB_USER}
+        - DB_HOST=${DB_HOST}
+        - DB_PORT=${DB_PORT}
     image: web
     volumes:
-      - .:/user/src/app/
+      - ./:/usr/src/app/
       - node_modules:/usr/src/app/node_modules
-    networks:
-      - frontend
     ports:
       - 3000:3000
+      - 8000:8000
+    depends_on:
+      - db
     environment:
+      - PIPENV_VENV_IN_PROJECT
+      - SECRET_KEY
+      - ALLOWED_HOSTS
+      - DJANGO_HOST
+      - DJANGO_PORT
+      - DEBUG
+      - JS_DEBUG
+      - LOCAL_DEV
+      - TEMPLATE_DEBUG
+      - PRODUCTION
       - NODE_ENV
+      - PORT
+      - DB_NAME
+      - DB_USER
+      - DB_HOST
+      - DB_PORT
 
-
-networks:
-  frontend:
-  backend:
+  redis:
+    image: redis:alpine
 
 volumes:
   node_modules:
+  postgres_data:

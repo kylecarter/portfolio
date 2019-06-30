@@ -16,6 +16,7 @@ class MyDocument extends Document {
                     <meta name="robots" content="INDEX,FOLLOW" />
                     <meta name="HandheldFriendly" content="true" />
                     <link rel="canonical" href="https://kylecarter.info/" />
+                    <link rel="shortcut icon" type="image/png" href="/static/favicon.ico" />
                     <link href="https://fonts.googleapis.com/css?family=Audiowide|Roboto+Mono:400,400i,700,700i&display=swap" rel="stylesheet" />
                     <link rel="stylesheet" href="/static/reset.css" />
                     <link rel="stylesheet" href="/static/normalize.css" />
