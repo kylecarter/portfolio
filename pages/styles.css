@@ -1,0 +1,23 @@
+:root {
+    --black: #000000;
+    --white: #ffffff;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    font: normal 16px/1.625 'Roboto Mono', helvetica, arial, sans-serif;
+    min-height: 100vh;
+}
+
+.content {
+    flex-grow: 1;
+}
+
+.hero {
+    background-color: var(--black);
+}
+
+.title {
+    color: var(--white);
+}
