@@ -6,7 +6,7 @@ import Page from './_page';
 // Styles
 import styles from './styles.css';
 
-class Home extends React.Component {
+export default class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
