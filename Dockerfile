@@ -1,4 +1,4 @@
-FROM python:3.7.3-alpine3.10
+FROM nikolaik/python-nodejs:python3.7-nodejs12
 
 # Define arguments
 ARG PIPENV_VENV_IN_PROJECT
@@ -11,6 +11,10 @@ ARG DEBUG
 ARG JS_DEBUG
 ARG LOCAL_DEV
 ARG TEMPLATE_DEBUG
+
+ARG PORT
+ARG PRODUCTION
+ARG NODE_ENV
 
 ARG DB_NAME
 ARG DB_USER
@@ -25,6 +29,11 @@ ENV SECRET_KEY $SECRET_KEY
 ENV ALLOWED_HOSTS $ALLOWED_HOSTS
 ENV PIPENV_VENV_IN_PROJECT $PIPENV_VENV_IN_PROJECT
 
+ENV DB_NAME $DB_NAME
+ENV DB_USER $DB_USER
+ENV DB_HOST $DB_HOST
+ENV DB_PORT $DB_PORT
+
 ENV DJANGO_HOST $DJANGO_HOST
 ENV DJANGO_PORT $DJANGO_PORT
 ENV DEBUG $DEBUG
@@ -33,10 +42,9 @@ ENV LOCAL_DEV $LOCAL_DEV
 ENV TEMPLATE_DEBUG $TEMPLATE_DEBUG
 ENV PRODUCTION $PRODUCTION
 
-ENV DB_NAME $DB_NAME
-ENV DB_USER $DB_USER
-ENV DB_HOST $DB_HOST
-ENV DB_PORT $DB_PORT
+ENV PORT $PORT
+ENV NODE_ENV $NODE_ENV
+ENV NPM_CONFIG_PRODUCTION $NPM_CONFIG_PRODUCTION
 
 # Create working directories
 RUN mkdir -p /usr/src/app
@@ -46,10 +54,15 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app
 
 # Make sure yarn and pipenv are available
+RUN npm i -g yarn
 RUN pip install pipenv
+
+# Copy package and package lock files
+COPY package*.json yarn.lock Pipfile Pipfile.lock /usr/src/app/
 
 # Now we install.
 RUN pipenv install --system
+RUN yarn install
 
 # Expose a port
-EXPOSE 8000
+EXPOSE 3000 8000

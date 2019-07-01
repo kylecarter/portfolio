@@ -39,13 +39,14 @@ For local development it is encouaged to create a `.env` file and define these v
 ## Initalizing the project
 1. Install the latest versions of Nodejs, Python 3 and Docker.
    > __NOTE__: Docker Compose has to be installed as a dependent package.
-2. Run `docker-compose build --force-rm`
+2. Run `docker-compose -f docker-compose.dev.yml build --force-rm`
    > __NOTE__: The above command will build the containers and start the process using the development environment set up.
 3. Create a database.
    1. Access the database container shell: `docker exec -it portfolio_db_1 bash`.
    2. Log into the database: `psql -U postgres`.
    3. Create the database: `create database portfolio`.
-4. Run initial migrations: `docker-compose run web python backend/manage.py migrate --noinput`.
-5. Create a Django super user: `docker-compose run web python backend/manage.py createsuperuser`.
+4. Run initial migrations: `docker-compose -f docker-compose.dev.yml run web python backend/manage.py migrate --noinput`.
+5. Create a Django super user: `docker-compose -f docker-compose.dev.yml run web python backend/manage.py createsuperuser`.
 
 ## Running the development environments
+`docker-compose -f docker-compose.dev.yml up -d`

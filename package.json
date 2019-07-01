@@ -8,14 +8,15 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "next build",
-    "dev": "next",
+    "build": "python backend/manage.py collectstatic --noinput && next build",
+    "dev": "concurrently --kill-others \"python backend/manage.py runserver ${DJANGO_HOST}:${DJANGO_PORT}\" \"next\"",
     "postinstall": "yarn run build",
-    "start": "next start"
+    "start": "concurrently --kill-others \"gunicorn backend.backend.wsgi:application --bind ${DJANGO_HOST}:${DJANGO_PORT}\" \"next start\""
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "autoprefixer": "^9.6.0",
+    "axios": "^0.19.0",
     "concurrently": "^4.1.1",
     "next": "^8.1.0",
     "normalize.css": "^8.0.1",
