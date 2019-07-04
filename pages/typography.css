@@ -1,0 +1,7 @@
+@import 'reset.css';
+@import 'normalize.css';
+
+:root {
+    --black: #000000;
+    --white: #ffffff;
+}
