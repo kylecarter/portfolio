@@ -17,7 +17,7 @@ class MyDocument extends Document {
                     <meta name="HandheldFriendly" content="true" />
                     <link rel="canonical" href="https://kylecarter.info/" />
                     <link rel="shortcut icon" type="image/png" href="/static/favicon.ico" />
-                    <link href="https://fonts.googleapis.com/css?family=Audiowide|Roboto+Mono:400,400i,700,700i|Roboto:400,400i,500,500i&display=swap" rel="stylesheet" />
+                    <link href="https://fonts.googleapis.com/css?family=Audiowide|Roboto+Mono:400,400i,500,500i,700,700i|Roboto:400,400i,500,500i&display=swap" rel="stylesheet" />
                 </Head>
                 <body>
                     <a href="#main-content" style={{

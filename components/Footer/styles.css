@@ -1,0 +1,105 @@
+@import '../../css/variables.css';
+
+.footer {
+    background-color: var(--heavy-metal);
+    color: var(--wild-sand);
+    font: 400 1.125em/1.625 var(--font-family-code);
+    padding: 1.875rem 1rem;
+    text-transform: lowercase;
+}
+
+.footer::after,
+.footer::before,
+.footerColumn::after,
+.footerColumn::before {
+    clear: both;
+    content: '';
+    display: table;
+}
+
+.footerColumn {
+    margin: 1rem auto;
+}
+
+.footerAnchor {
+    color: inherit;
+    display: block;
+    font-size: 1.222em;
+}
+
+.footerAnchor:hover,
+.footerAnchor:focus,
+.footerAnchor:active {
+    color: var(--pistacio-2);
+}
+
+@media screen and (max-width: 599px) {
+    .footerAnchor {
+        padding: 0.5rem 0;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .footerMenu {
+        display: flex;
+    }
+
+    .footerMenu>li {
+        display: inline-block;
+        flex: 1 1 0;
+    }
+
+    .footerAnchor {
+        font-size: 1em;
+        padding: 0 1.5rem;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 991px) {
+    .footer {
+        text-align: center;
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+    .footer {
+        padding: 3.375rem calc((100% - (var(--breakpoint-tablet) - 2rem)) / 2);
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .footer {
+        display: flex;
+        font-size: 1.25rem;
+        padding: 4.813rem calc((100% - (var(--breakpoint-laptop) - 2rem)) / 2);
+    }
+
+    .footerColumn {
+        flex: 1 1 0;
+        float: left;
+        width: 50%;
+    }
+
+    .footerMenu {
+        float: right;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .footer {
+        padding: 4.813rem calc((100% - (var(--breakpoint-desktop) - 2rem)) / 2);
+    }
+}
+
+.hideVisually {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    display: block;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}

@@ -1,4 +1,4 @@
-@import 'typography.css';
+@import '../css/typography.css';
 
 .page {
     display: flex;

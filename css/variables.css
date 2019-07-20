@@ -1,0 +1,75 @@
+:root {
+    --black: #000000;
+    --heavy-metal: #21221f;
+    --gray-dark: #343a40;
+    --xanadu: #767776;
+    --gray: #6c757d;
+    --iron: #d3d3d5;
+    --desert-storm: #f6f6f4;
+    --alabaster: #f9f9f9;
+    --wild-sand: #f4f4f4;
+    --white: #ffffff;
+
+    --chalet-green: #426130;
+    --pistachio: #95ac09;
+    --pistacio-2: #a5bc08;
+    --palm-leaf: #20370f;
+    --tahuna-sands: #edf2cf;
+
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+
+    --light: #f8f9fa;
+    --dark: #343a40;
+
+    --twitter: #4099ff;
+    --facebook: #3b5998;
+    --googleplus: #dd4b39;
+    --pinterest: #cb2027;
+    --linkedin: #007bb6;
+    --youtube: #bb0000;
+    --vimeo: #aad450;
+    --tumblr: #32506d;
+    --instagram: #517fa4;
+    --flickr: #ff0084;
+    --dribbble: #ea4c89;
+    --quora: #a82400;
+    --foursquare: #0072b1;
+    --forrst: #5B9A68;
+    --vk: #45668e;
+    --wordpress: #21759b;
+    --stumbleupon: #EB4823;
+    --yahoo: #7B0099;
+    --blogger: #fb8f3d;
+    --soundcloud: #ff3a00;
+
+    --breakpoint-mobile: 480px;
+    --breakpoint-phablet: 600px;
+    --breakpoint-tablet: 768px;
+    --breakpoint-laptop: 992px;
+    --breakpoint-desktop: 1200px;
+
+    --font-family-sans-serif: 'Roboto', -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: 'Roboto Mono', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --font-family-serif: 'Roboto Slab', georgia, times, serif;
+
+    --font-family-base: var(--font-family-sans-serif);
+    --font-family-headings: var(--font-family-monospace);
+    --font-family-display: 'Autowide', var(--font-family-monospace);
+    --font-family-code: var(--font-family-monospace);
+}
