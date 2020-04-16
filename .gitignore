@@ -178,3 +178,6 @@ typings/
 
 # VS Code
 .vscode/
+
+# Project
+frontend/public/static/

@@ -28,6 +28,7 @@ This project had the following dependencies:
 - TEMPLATE_DEBUG
 - PRODUCTION
 - NODE_ENV
+- DEV_ENV
 - PORT
 - DB_NAME
 - DB_USER
@@ -49,4 +50,21 @@ For local development it is encouaged to create a `.env` file and define these v
 5. Create a Django super user: `docker-compose -f docker-compose.dev.yml run web python backend/manage.py createsuperuser`.
 
 ## Running the development environments
-`docker-compose -f docker-compose.dev.yml up -d`
+```bash
+source .env
+docker-compose -f docker-compose.dev.yml up -d
+docker-compose -f docker-compose.dev.yml run web yarn run dev
+```
+
+## Pipenv
+Reivew this [blog](https://thoughtbot.com/blog/how-to-manage-your-python-projects-with-pipenv). The basic idea:
+
+### Install packages
+* `pipenv install` - to install all packages.
+* `pipenv install <package_name>` - install a specific package.
+* `pipenv install <package_name> --dev` - install a dev dependency.
+* `pipenv uninstall <package_name>` - uninstall a specific package.
+* `pipenv lock` - generate Pipfile.lock
+
+### The Environment
+`pipenv shell` - generate the current virtual environment.

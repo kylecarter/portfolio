@@ -132,12 +132,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/django/'
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static/django')
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'public/static/django')
 STATICFILES_DIRS = []
 
 # Additional Installed Apps
-INSTALLED_APPS = [] + INSTALLED_APPS
+INSTALLED_APPS = INSTALLED_APPS = [
+    'api.apps.ApiConfig',
+] + INSTALLED_APPS
 
 # Media
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static/media')
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'public/static/media')
 MEDIA_URL = '/static/media/'

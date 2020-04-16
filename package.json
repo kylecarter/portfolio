@@ -8,26 +8,70 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "python backend/manage.py collectstatic --noinput && next build",
-    "dev": "concurrently --kill-others \"python backend/manage.py runserver ${DJANGO_HOST}:${DJANGO_PORT}\" \"next\"",
+    "build": "python backend/manage.py collectstatic --noinput && babel src --out-dir dist --copy-files --extensions '.js,.jsx'",
+    "dev": "concurrently --kill-others \"python backend/manage.py runserver ${DJANGO_HOST}:${DJANGO_PORT}\" \"nodemon --ext '.js,.jsx' --ignore 'dist' --exec babel-node ./bin/www\"",
+    "eject": "react-scripts eject",
     "postinstall": "yarn run build",
-    "start": "concurrently --kill-others \"gunicorn backend.backend.wsgi:application --bind ${DJANGO_HOST}:${DJANGO_PORT}\" \"next start\""
+    "start": "concurrently --kill-others \"gunicorn backend.backend.wsgi:application --bind ${DJANGO_HOST}:${DJANGO_PORT}\" \"react-scripts start\"",
+    "test": "react-scripts test"
   },
   "dependencies": {
-    "@zeit/next-css": "^1.0.1",
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
+    "@babel/node": "^7.7.0",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "@babel/register": "^7.7.0",
+    "@babel/runtime": "^7.7.2",
     "autoprefixer": "^9.6.0",
     "axios": "^0.19.0",
     "concurrently": "^4.1.1",
-    "next": "^8.1.0",
+    "cookie-parser": "^1.4.4",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "http-errors": "^1.7.3",
+    "http-proxy": "^1.18.0",
+    "morgan": "^1.9.1",
     "normalize.css": "^8.0.1",
     "postcss-css-variables": "^0.13.0",
     "postcss-import": "^12.0.1",
-    "postcss-mixins": "^6.2.1",
     "postcss-url": "^8.0.0",
-    "postcss-utilities": "^0.8.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "reset.css": "^2.0.2",
-    "underscore": "^1.9.1"
+    "underscore": "^1.9.1",
+    "yarn": "^1.19.1"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.6.1",
+    "@typescript-eslint/parser": "^2.6.1",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.6.0",
+    "eslint-config-react-app": "^5.0.2",
+    "eslint-plugin-flowtype": "^4.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^2.2.0",
+    "nodemon": "^1.19.4",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^1.19.1",
+    "stylelint": "^11.1.1"
   }
 }
