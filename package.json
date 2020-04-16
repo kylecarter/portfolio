@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "python backend/manage.py collectstatic --noinput && babel src --out-dir dist --copy-files --extensions '.js,.jsx'",
+    "build": "python ./backend/manage.py collectstatic --noinput && babel src --out-dir dist --copy-files --extensions '.js,.jsx'",
     "dev": "concurrently --kill-others \"python backend/manage.py runserver ${DJANGO_HOST}:${DJANGO_PORT}\" \"nodemon --ext '.js,.jsx' --ignore 'dist' --exec babel-node ./bin/www\"",
     "eject": "react-scripts eject",
     "postinstall": "yarn run build",
