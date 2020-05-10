@@ -183,3 +183,4 @@ typings/
 frontend/public/static/
 public/static/
 *.bak
+env.bat
