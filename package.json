@@ -2,50 +2,98 @@
   "name": "portfolio",
   "version": "2.0.0",
   "description": "This repo represents the personal website for Kyle Carter to act as a portfolio for his professional web development knowledge.",
-  "main": "index.js",
-  "repository": "https://github.com/kylecarter/portfolio.git",
-  "author": "kylecarter <kyle.andrew.carter@gmail.com>",
-  "license": "MIT",
-  "private": true,
-  "scripts": {
-    "build": "python ./backend/manage.py collectstatic --noinput && babel src --out-dir dist --copy-files --extensions '.js,.jsx'",
-    "dev": "concurrently --kill-others \"python backend/manage.py runserver ${DJANGO_HOST}:${DJANGO_PORT}\" \"nodemon --ext '.js,.jsx' --ignore 'dist' --exec babel-node ./bin/www\"",
-    "eject": "react-scripts eject",
-    "postinstall": "yarn run build",
-    "start": "concurrently --kill-others \"gunicorn backend.backend.wsgi:application --bind ${DJANGO_HOST}:${DJANGO_PORT}\" \"react-scripts start\"",
-    "test": "react-scripts test"
-  },
   "dependencies": {
-    "@babel/cli": "^7.7.0",
-    "@babel/core": "^7.7.2",
-    "@babel/node": "^7.7.0",
-    "@babel/plugin-transform-runtime": "^7.6.2",
-    "@babel/preset-env": "^7.7.1",
-    "@babel/preset-react": "^7.7.0",
-    "@babel/register": "^7.7.0",
-    "@babel/runtime": "^7.7.2",
-    "autoprefixer": "^9.6.0",
-    "axios": "^0.19.0",
-    "concurrently": "^4.1.1",
-    "cookie-parser": "^1.4.4",
+    "axios": "^0.19.2",
+    "chalk": "^4.0.0",
+    "concurrently": "^5.2.0",
+    "cookie-parser": "^1.4.5",
     "debug": "^4.1.1",
     "express": "^4.17.1",
     "http-errors": "^1.7.3",
     "http-proxy": "^1.18.0",
-    "morgan": "^1.9.1",
+    "morgan": "^1.10.0",
+    "node-babel": "^0.1.2",
     "normalize.css": "^8.0.1",
-    "postcss-css-variables": "^0.13.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-config": "^5.1.1",
+    "react-router-dom": "^5.1.2",
+    "reset.css": "^2.0.2",
+    "underscore": "^1.10.2",
+    "yarn": "^1.22.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/register": "^7.9.0",
+    "@babel/runtime": "^7.9.6",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/parser": "^2.30.0",
+    "autoprefixer": "^9.7.6",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.5.3",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-plugin-flowtype": "^4.7.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^3.0.0",
+    "husky": "^4.2.5",
+    "nodemon": "^2.0.3",
+    "postcss": "^7.0.29",
+    "postcss-css-variables": "^0.17.0",
     "postcss-import": "^12.0.1",
     "postcss-url": "^8.0.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "reset.css": "^2.0.2",
-    "underscore": "^1.9.1",
-    "yarn": "^1.19.1"
+    "prettier": "^2.0.5",
+    "stylelint": "^13.3.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "scripts": {
+    "build": "yarn run build:node",
+    "build:node": "./node_modules/.bin/webpack --mode ${NODE_ENV}",
+    "build:python": "python ./backend/manage.py collectstatic --noinput",
+    "dev": "yarn run build && yarn run dev:server",
+    "dev:server": "concurrently --kill-others \"yarn run dev:server:node\"",
+    "dev:server:node": "nodemon --exec babel-node ./bin/www",
+    "dev:server:python": "python ./backend/manage.py runserver",
+    "lint": "./node_modules/.bin/eslint ./bin --ext .js,.jsx --ignore-path ./bin/backend --fix",
+    "postinstall": "yarn run build",
+    "start": "concurrently --kill-others \"yarn run start:python\" \"yarn run start:node\"",
+    "start:node": "babel-node --optimize_for_size --max_old_space_size=920 --gc_interval=100 --expose-gc ./bin/www",
+    "start:python": "gunicorn backend.backend.wsgi:application --bind ${DJANGO_HOST}:${DJANGO_PORT}",
+    "test": "yarn run lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kylecarter/portfolio.git"
+  },
+  "keywords": [
+    "react",
+    "django",
+    "javascript",
+    "python",
+    "html",
+    "css",
+    "html5",
+    "css3"
+  ],
+  "author": "Kyle A. Carter <kyle.andrew.carter@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kylecarter/portfolio/issues"
+  },
+  "homepage": "https://github.com/kylecarter/portfolio#readme",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -58,20 +106,10 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.6.1",
-    "@typescript-eslint/parser": "^2.6.1",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.6.0",
-    "eslint-config-react-app": "^5.0.2",
-    "eslint-plugin-flowtype": "^4.3.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.16.0",
-    "eslint-plugin-react-hooks": "^2.2.0",
-    "nodemon": "^1.19.4",
-    "parcel-bundler": "^1.12.4",
-    "prettier": "^1.19.1",
-    "stylelint": "^11.1.1"
+  "husky": {
+    "hooks": {
+      "pre-commit": "",
+      "pre-push": ""
+    }
   }
 }
