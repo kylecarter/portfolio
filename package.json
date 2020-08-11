@@ -33,7 +33,7 @@
     "jquery": "1.11.2",
     "react": "15.0.1",
     "susy": "2.2.12",
-    "tinymce": "5.1.6",
+    "tinymce": "5.4.1",
     "uglify-js": "2.6.2",
     "underscore": "1.8.3"
   }
