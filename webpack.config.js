@@ -8,7 +8,7 @@ module.exports = {
     main: "./src/main.js",
   },
   output: {
-    path: path.resolve(__dirname, "frontend/public/assets"),
+    path: path.resolve(__dirname, "public/assets"),
     filename: "[name].bundle.js",
   },
   devtool: isDev ? "inline-source-map" : false,
@@ -31,7 +31,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".js", ".css", ".vue"],
+    extensions: [".js", ".css"],
   },
   plugins: [
     new MiniCssExtractPlugin({

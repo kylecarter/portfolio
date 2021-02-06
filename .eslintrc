@@ -1,5 +1,5 @@
 {
-    "extends": ["airbnb", "react-app", "plugin:prettier/recommended"],
+    "extends": ["plugin:vue/strongly-recommended", "plugin:prettier/recommended"],
     "parser": "babel-eslint",
     "plugins": ["prettier"],
     "env": {

@@ -1,7 +1,7 @@
 {
     "presets": [
         "@babel/preset-env",
-        "@vue/babel-preset-ap"
+        "@vue/babel-preset-app"
     ],
     "plugins": [
         "@babel/plugin-transform-runtime"

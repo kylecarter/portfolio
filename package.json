@@ -18,21 +18,23 @@
     "build:default": "./node_modules/.bin/webpack --mode $NODE_ENV",
     "build:windows": "./node_modules/.bin/webpack --mode %NODE_ENV%",
     "dev": "node ./frontend/bin/www",
-    "lint": "./node_modules/.bin/eslint --ext .js, .vue --fix src",
+    "lint": "./node_modules/.bin/eslint --ext .js --fix src",
     "postinstall": "yarn run build",
     "start": "node --optimize_for_size --max_old_space_size=920 --gc_interval=100 --expose-gc ./frontend/bin/www",
     "test": "yarn run lint"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "",
-      "pre-push": ""
+      "post-merge": "yarn run build",
+      "pre-commit": "yarn run test",
+      "pre-push": "yarn run test"
     }
   },
   "dependencies": {
     "axios": "^0.21.1",
     "cookie-parser": "^1.4.5",
     "debug": "^4.3.1",
+    "eslint-plugin-vue": "^7.5.0",
     "express": "^4.17.1",
     "hbs": "^4.1.1",
     "http-errors": "^1.8.0",
