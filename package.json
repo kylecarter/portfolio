@@ -23,7 +23,12 @@
     "start": "node --optimize_for_size --max_old_space_size=920 --gc_interval=100 --expose-gc ./frontend/bin/www",
     "test": "yarn run lint"
   },
-  "husky": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "",
+      "pre-push": ""
+    }
+  },
   "dependencies": {
     "axios": "^0.21.1",
     "cookie-parser": "^1.4.5",
