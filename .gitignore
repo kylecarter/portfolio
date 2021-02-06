@@ -178,6 +178,9 @@ typings/
 
 # Project
 *.bak
+*.bat
+.env
+.env.*
 public/
 !public/favicon.ico
 !public/logo.svg

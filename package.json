@@ -1,0 +1,14 @@
+{
+  "name": "portfolio",
+  "version": "2.0.0",
+  "description": "This repo represents the personal website for Kyle Carter to act as a portfolio for his professional web development knowledge.",
+  "main": "index.js",
+  "repository": "https://github.com/kylecarter/portfolio.git",
+  "author": "Kyle Carter <kyle.andrew.carter@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.21.1",
+    "vue": "^2.6.12"
+  }
+}
