@@ -1,2 +1,0 @@
-## Portfolio
-This repo represents the personal website for Kyle Carter to act as a portfolio for his professional web development knowledge. This repo will be shared with colleagues and potential employers to review coding conventions and code management by Kyle. This repo is not intended for use by other individuals and should not be considered code that can be used in projects outside of this repo. The project is built with a variety of front end technologies with a Django back end for server side management.
