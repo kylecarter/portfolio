@@ -4,5 +4,5 @@ import Vue from "vue";
 import styles from "./main.css";
 
 const app = new Vue({
-  el: document.getElementById("app")
+  el: document.getElementById("app"),
 });
