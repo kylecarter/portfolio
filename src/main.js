@@ -1,8 +1,9 @@
 import Vue from "vue";
+import VueRouter from "vue-router";
 
-// Styles
-import styles from "./main.css";
+import router from "./router";
 
 const app = new Vue({
-  el: document.getElementById("app"),
-});
+  router,
+  render: (h) => h(App),
+}).$mount("#v-container");

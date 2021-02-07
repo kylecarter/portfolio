@@ -17,11 +17,14 @@
     "build": "run-script-os",
     "build:default": "./node_modules/.bin/webpack --mode $NODE_ENV",
     "build:windows": "./node_modules/.bin/webpack --mode %NODE_ENV%",
-    "dev": "node ./frontend/bin/www",
-    "lint": "./node_modules/.bin/eslint --ext .js --fix src",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"nodemon ./frontend/bin/www\"",
+    "lint": "./node_modules/.bin/eslint \"src/**/*.{js,vue}\" --fix",
     "postinstall": "yarn run build",
     "start": "node --optimize_for_size --max_old_space_size=920 --gc_interval=100 --expose-gc ./frontend/bin/www",
-    "test": "yarn run lint"
+    "test": "yarn run lint",
+    "watch": "run-script-os",
+    "watch:default": "./node_modules/.bin/webpack --mode $NODE_ENV --watch",
+    "watch:windows": "./node_modules/.bin/webpack --mode %NODE_ENV% --watch"
   },
   "husky": {
     "hooks": {
@@ -32,6 +35,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "concurrently": "^5.3.0",
     "cookie-parser": "^1.4.5",
     "debug": "^4.3.1",
     "eslint-plugin-vue": "^7.5.0",
@@ -69,6 +73,7 @@
     "nodemon": "^2.0.7",
     "postcss": "^8.2.4",
     "postcss-css-variables": "^0.17.0",
+    "postcss-env-function": "^3.0.0",
     "postcss-import": "^14.0.0",
     "postcss-loader": "^5.0.0",
     "postcss-url": "^10.1.1",
@@ -76,6 +81,7 @@
     "style-loader": "^2.0.0",
     "stylelint": "^13.9.0",
     "vue-loader": "^15.9.6",
+    "vue-template-compiler": "^2.6.12",
     "webpack": "^5.21.1",
     "webpack-cli": "^4.5.0"
   }

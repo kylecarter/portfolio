@@ -61,17 +61,17 @@
   --blogger: #fb8f3d;
   --soundcloud: #ff3a00;
 
-  --breakpoint-min-mobile: 480px;
-  --breakpoint-min-phablet: 600px;
-  --breakpoint-min-tablet: 768px;
-  --breakpoint-min-laptop: 992px;
-  --breakpoint-min-desktop: 1200px;
+  --breakpoint-min-xs: 480px;
+  --breakpoint-min-md: 600px;
+  --breakpoint-min-md: 768px;
+  --breakpoint-min-lg: 992px;
+  --breakpoint-min-xl: 1200px;
 
-  --breakpoint-max-mobile: 479px;
-  --breakpoint-max-phablet: 599px;
-  --breakpoint-max-tablet: 767px;
-  --breakpoint-max-laptop: 991px;
-  --breakpoint-max-desktop: 1199px;
+  --breakpoint-max-xs: 479px;
+  --breakpoint-max-md: 599px;
+  --breakpoint-max-md: 767px;
+  --breakpoint-max-lg: 991px;
+  --breakpoint-max-xl: 1199px;
 
   --font-family-sans-serif: 'Roboto', -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: 'Roboto Mono', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -133,8 +133,7 @@ h1,
   letter-spacing: 0.045em;
 }
 
-@media screen and (max-width: var(--breakpoint-max-phablet)) {
-
+@media screen and (max-width: env(--breakpoint-max-sm)) {
   h1,
   .h1,
   .display-h1 {
@@ -160,7 +159,7 @@ h2,
   letter-spacing: 0.035em;
 }
 
-@media screen and (max-width: var(--breakpoint-max-phablet)) {
+@media screen and (max-width: env(--breakpoint-max-sm)) {
   h2,
   .h2 {
     font-size: 1.75em;
@@ -182,8 +181,7 @@ h3,
   letter-spacing: 0.03em;
 }
 
-@media screen and (max-width: var(--breakpoint-max-phablet)) {
-
+@media screen and (max-width: env(--breakpoint-max-sm)) {
   h3,
   .h3,
   .display-h2 {
@@ -406,4 +404,28 @@ nav ol {
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+@media screen and (min-width: env(--breakpoint-min-md)) {
+  .container {
+    width: calc(var(--breakpoint-min-md) - 2rem);
+  }
+}
+
+@media screen and (min-width: env(--breakpoint-min-lg)) {
+  .container {
+    width: calc(var(--breakpoint-min-lg) - 2rem);
+  }
+}
+
+@media screen and (min-width: env(--breakpoint-min-xl)) {
+  .container {
+    width: calc(var(--breakpoint-min-xl) - 2rem);
+  }
 }

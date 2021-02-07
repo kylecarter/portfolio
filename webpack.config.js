@@ -1,5 +1,6 @@
 const path = require("path");
-const  MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -15,29 +16,35 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.vue$/i,
+        exclude: /node_modules/,
+        loader: "vue-loader",
+      },
+      {
         test: /\.css$/i,
         exclude: /node_modules/,
         use: [
-          isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+          isDev ? "vue-style-loader" : MiniCssExtractPlugin.loader,
           "css-loader",
-          "postcss-loader"
-        ]
+          "postcss-loader",
+        ],
       },
       {
-        test: /\.(js|vue)$/i,
+        test: /\.js$/i,
         exclude: /node_modules/,
         loader: "babel-loader",
       },
     ],
   },
   resolve: {
-    extensions: [".js", ".css"],
+    extensions: [".js", ".vue", ".css"],
   },
   plugins: [
+    new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
       linkType: "text/css",
       filename: "[name].css",
-      chunkFilename: "[id].css"
+      chunkFilename: "[id].css",
     }),
   ],
 };

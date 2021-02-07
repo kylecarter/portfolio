@@ -1,34 +1,36 @@
 const path = require("path");
-const express = require("express");
 const Vue = require("vue");
-const router = express.Router();
+const VueRouter = require("vue-router");
 const renderer = require("vue-server-renderer").createRenderer({
-  template: require("fs").readFileSync(path.join(path.dirname(__dirname), "index.template.html"), "utf-8")
+  template: require("fs").readFileSync(
+    path.join(path.dirname(__dirname), "index.template.html"),
+    "utf-8"
+  ),
 });
 
-/* GET home page. */
-router.get("/", function(req, res) {
+module.exports = function (req, res) {
+  Vue.use(VueRouter);
+
   const context = {
     title: "Kyle A. Carter",
-    meta: ""
+    meta: "",
   };
 
   const app = new Vue({
-    data: {
-      url:  req.protocol + '://' + req.get('host') + req.originalUrl,
-    },
-    template: `<h1>Welcome to Vue Express</h1>
-      <div>The visited URL is: {{ url }}</div>`,
-  });
+    router: new VueRouter({
+      mode: "history",
+      routes: require("../../src/router"),
+    }),
+  }).$mount("#v-container");
 
-  renderer
-    .renderToString(app, context, (err, html) => {
-      if (err) {
-        res.status(500).end("Internal Server Error")
-        return;
+  renderer.renderToString(app, context, (err, html) => {
+    if (err) {
+      if (process.env.NODE_ENV !== "production") {
+        console.log(err);
       }
-      res.end(html);
-    });
-});
-
-module.exports = router;
+      res.status(500).end("Internal Server Error");
+      return;
+    }
+    res.end(html);
+  });
+};
